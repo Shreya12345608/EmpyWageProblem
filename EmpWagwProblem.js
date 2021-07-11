@@ -1,13 +1,11 @@
-//UC2 - Ability to Calculate Daily Employee Wage based on part time or full time work 
+//UC4 -  Calculating  Wages for a month assuming 20 working days in amonth
 const IS_ABSENT = 0;
 const IS_PART_TIME = 1;
 const IS_FULL_TIME = 2;
 const PART_TIME_HOURS = 4;
 const FULL_TIME_HOURS = 8;
 const WAGE_PER_HOUR = 20;
-//let empHrs = 0;
-//Math.random() provides a random number from 0,1,2 ) 
-let empCheck = Math.floor(Math.random() * 3) ;
+
 //Functions are a great way to reuse code.
 // function for  getworkinghours( parameter)
 function GetWorkingHours(empCheck){
@@ -25,13 +23,16 @@ switch (empCheck) {
         return  null; //null 'no value' or nonexistence of any value
 }
 }
-//0,1,2
-console.log(empCheck);
-
-let empHrs = GetWorkingHours(empCheck);
-// 0,4 , 8
-console.log(empHrs);
-let empWage = empHrs * WAGE_PER_HOUR; //const WAGE_PER_HOUR = 20;
-console.log("Emp Wage: " + empWage);
-
+//UC4 -  Calculating  Wages for a month assuming 20 working days in amonth
+let empHrs = 0;
+const WORKING_DAYS_IN_A_MONTH = 20;
+for (let days = 1; days <= WORKING_DAYS_IN_A_MONTH; days++) {
+//Math.random() provides a random number from 0,1,2 ) 
+let empCheck = Math.floor(Math.random() * 3) ;
+    empHrs += GetWorkingHours(empCheck);  // empHrs=empHrs+ empCheck random value
+}
+//calculate empWage
+let empWage = empHrs * WAGE_PER_HOUR;
+//oP
+console.log("Total Hours: " + empHrs + "\nTotal Wage: " + empWage);
 
