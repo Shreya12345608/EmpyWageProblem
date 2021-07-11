@@ -23,12 +23,18 @@ switch (empCheck) {
         return  null; //null 'no value' or nonexistence of any value
 }
 }
-//UC5 -  Calculating  Wages till a condition of total workinghours of 160 or  max days of 20 is reached for a month
+//function for calculate emp wage
+function CalculateWage(empHrs) {
+    return empHrs * WAGE_PER_HOUR;
+}
+
 let empHrs = 0;
 const MAX_WORKING_DAYS = 20;
 const MAX_WORKING_HOURS = 160;
 let totalEmpHrs = 0;
 let totalWorkingDays = 0;
+// Array() constructor is used to create Array objects
+let dailyWageArr = new Array();
 //0<=20 && 0<= 160
 while (totalEmpHrs <= MAX_WORKING_HOURS && totalWorkingDays <= MAX_WORKING_DAYS) {
     //totalworkng days = +1
@@ -40,11 +46,20 @@ while (totalEmpHrs <= MAX_WORKING_HOURS && totalWorkingDays <= MAX_WORKING_DAYS)
     //0.......+ random num <= 160
     if (totalEmpHrs + dailyEmpHrs <= MAX_WORKING_HOURS) {
         totalEmpHrs += dailyEmpHrs;
-    } else {
+        //push() method adds new items to the end of an array.
+        //Adding elements to an array
+         dailyWageArr.push(dailyEmpHrs);
+        } else {
         break;
     }
 }
+
+//print array
+console.log(dailyWageArr);
 //calculate total emp wage
-let totalEmpWage = totalEmpHrs * WAGE_PER_HOUR;
+let totalEmpWage = CalculateWage(totalEmpHrs);
+//let totalEmpWage = totalEmpHrs * WAGE_PER_HOUR;
 //op
 console.log("Total Hours: " + totalEmpHrs + "\nTotal Wage: " + totalEmpWage);
+
+
